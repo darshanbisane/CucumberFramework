@@ -14,6 +14,7 @@ public class leadsteps extends basesteps
     public void User_click_on_new_lead()
     {
         hp.clickNewLead();
+        System.out.println("I am Darshan");
     }
     @Then("fill all mandatory fields and click on save.")
     public void all_mandatoty_fields()
