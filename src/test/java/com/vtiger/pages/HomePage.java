@@ -26,6 +26,7 @@ public class HomePage extends UIActions
     {
        // lnk_Home.isDisplayed();
         ElementDisp(lnk_Home , "Home tab is display on Homepage"); //for Extent report
+
     }
     public void verifyLogout()
     {
