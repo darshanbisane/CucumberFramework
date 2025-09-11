@@ -56,6 +56,7 @@ public class LeadPage extends UIActions
     {
         //td_password.sendKeys(pwd);
         SetInput(tb_comp,comp ,comp+ "Has been Enter company fileds"); //Extend report
+
     }
     public void  clicksave()
     {
