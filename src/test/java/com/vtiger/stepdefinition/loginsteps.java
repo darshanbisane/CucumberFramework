@@ -25,6 +25,7 @@ public class login extends basesteps
         createExtendreport();      // for Extent report
        TcName = scenario.getName();
        report = extent.createTest(TcName); //for Extent report
+        Initiation();  // basestep madhun aala ahe configuration file chi functionality call karnay sathi.
     }
     @After
     public void Quitbro()
@@ -45,7 +46,8 @@ public class login extends basesteps
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get("http://localhost:100");*/
-        Initiation();
+        if(driver == null)
+            launchApp();
         lp = new LoginPage(driver);   // login page connectivity
         hp = new HomePage(driver);  // home page Connectivity
         ldp = new LeadPage(driver); // lead page Connectivity
@@ -56,7 +58,7 @@ public class login extends basesteps
        // lp.login("admin","admin");
         lp.login(dt.get(TcName).get("UserId"), dt.get(TcName).get("Password"));
     }
-    @Then("user should be navigated to home page.")
+    @Then("user should be navigate to home page.")
     public void user_should_be_navigate_to_home_page()
     {
         hp.verifyHome();
@@ -67,7 +69,7 @@ public class login extends basesteps
     {
 
         hp.verifyLogout();
-        driver.quit();
+       // driver.quit();
 
     }
     @When("user Enters Invalid Credential and click on login page.")
@@ -87,11 +89,16 @@ public class login extends basesteps
         lp.text_errormsg();
        // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
        // wait.until(ExpectedConditions.titleContains("You must specify a valid username and password."));
-        driver.quit();
+      //  driver.quit();
     }
     @When("user Enters Invalid Credential userid as {string} and password as {string} and click on login page.")
     public void user_enters_invalid_credential_userid_as_and_password_as_and_click_on_login_page(String uid, String pwd)
      {
         lp.login(uid,pwd);
      }
+    @Then("user should be navigated to home page.")
+    public void user_should_be_navigated_to_home_page()
+    {
+       hp.verifyHome();
+    }
 }
